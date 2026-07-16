@@ -1,0 +1,24 @@
+{
+  "name": "Algeria Fire Watch",
+  "short_name": "FireWatch DZ",
+  "description": "Real-time wildfire monitoring, reporting, and AI-powered verification platform for Algeria.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b1329",
+  "theme_color": "#dc2626",
+  "icons": [
+    {
+      "src": "https://img.icons8.com/color/192/000000/wildfire.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://img.icons8.com/color/512/000000/wildfire.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

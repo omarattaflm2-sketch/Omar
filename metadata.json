@@ -1,0 +1,6 @@
+{
+  "name": "Algeria Fire Watch",
+  "description": "Algeria Fire Watch - Real-time wildfire monitoring, reporting, and AI-powered verification platform for Algeria.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

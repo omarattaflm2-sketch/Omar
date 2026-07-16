@@ -1,0 +1,162 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with role-based access control (User, Moderator, Authority)",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "The unique Firebase Auth user ID"
+        },
+        "email": {
+          "type": "string",
+          "description": "User email address"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["user", "moderator", "authority"],
+          "description": "The user role governing permissions"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of user creation"
+        }
+      },
+      "required": ["uid", "email", "role", "createdAt"]
+    },
+    "Wildfire": {
+      "title": "Wildfire",
+      "description": "A wildfire report and monitoring entity",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The document ID"
+        },
+        "lat": {
+          "type": "number",
+          "description": "Latitude of the fire"
+        },
+        "lng": {
+          "type": "number",
+          "description": "Longitude of the fire"
+        },
+        "wilaya": {
+          "type": "string",
+          "description": "Wilaya name in Algeria"
+        },
+        "commune": {
+          "type": "string",
+          "description": "Commune name in Algeria"
+        },
+        "severity": {
+          "type": "string",
+          "enum": ["Low", "Medium", "High", "Critical"],
+          "description": "Fire severity level"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["Active", "Controlled", "Extinguished"],
+          "description": "Current status of the fire"
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 1000,
+          "description": "Short description of the wildfire"
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "Base64 or image storage reference"
+        },
+        "reporterId": {
+          "type": "string",
+          "description": "UID of the user who reported it"
+        },
+        "reporterEmail": {
+          "type": "string",
+          "description": "Email of the user who reported it"
+        },
+        "isVerified": {
+          "type": "boolean",
+          "description": "Whether verified by moderators/authorities"
+        },
+        "burnedArea": {
+          "type": "number",
+          "description": "Estimated burned area in hectares"
+        },
+        "reportsCount": {
+          "type": "integer",
+          "description": "Number of duplicate confirmation reports"
+        },
+        "aiConfidence": {
+          "type": "number",
+          "description": "Confidence of AI wildfire detection in image"
+        },
+        "aiAnalysis": {
+          "type": "string",
+          "description": "AI analysis summary text"
+        },
+        "dangerIndex": {
+          "type": "integer",
+          "description": "Calculated fire danger index (1-100)"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Time the report was created"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Time the report was last updated"
+        }
+      },
+      "required": ["lat", "lng", "wilaya", "commune", "severity", "status", "reporterId", "isVerified", "createdAt", "updatedAt"]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "Regional alert system notification",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique notification ID"
+        },
+        "wilaya": {
+          "type": "string",
+          "description": "Target Wilaya name"
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the alert"
+        },
+        "message": {
+          "type": "string",
+          "description": "Detail message"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of notification"
+        }
+      },
+      "required": ["wilaya", "title", "message", "createdAt"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "wildfires/{fireId}": {
+      "schema": "Wildfire",
+      "description": "Wildfire reports and states"
+    },
+    "notifications/{notificationId}": {
+      "schema": "Notification",
+      "description": "Push/regional notifications"
+    }
+  }
+}
